@@ -4,8 +4,7 @@
 #******************************************************************************
 
 - name: Test handlers
-  hosts: all
-  gather_facts: no
+  hosts: localhost
   tasks:
   - name: create file
     file:
