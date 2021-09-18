@@ -1,0 +1,23 @@
+---
+#******************************************************************************
+# File: test2.yml
+#******************************************************************************
+
+- name: Test handlers
+  hosts: all
+  gather_facts: no
+  tasks:
+  - name: create file
+    file:
+      path: "/tmp/file.txt"
+      state: touch
+    notify:  add line
+
+  handlers:
+  - name: add line
+    lineinfile:
+      dest: /tmp/file.txt
+      regexp: '^This'
+      line: This is line
+
+  
